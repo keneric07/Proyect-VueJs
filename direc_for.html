@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directices v-for</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+<div id="app-4">
+<!--<span>Uso de V-For</span> -->
+
+<!--1° ejemp  v-for basico (Lista Ordenada)-->
+    <ol>
+        <li v-for="color in colores">
+            {{color.nombre}}
+        </li>
+    </ol>
+
+
+<!-- 2° ejemp. v-for con indice usando una lista no ordenada -->
+<ul>
+    <li v-for="(pais, index) in paises"> {{index}} - {{pais.nombre}}</li>
+</ul>
+
+<!-- 3° ejemp. v-for con Objetos y uso de value -->
+<ul>
+    <li v-for="value in objetoPrueba">{{value}}</li>
+</ul>
+
+<!-- 4° ejemp. v-for con objetos y uso de value y key -->
+<ul>
+    <li v-for="(value,key) in objetoPrueba">{{key}} : {{value}}</li>
+</ul>
+
+<!-- 5° ejemp. v-for con objetos y uso de indice, valor y clave -->
+<ul>
+    <li v-for="(value,key,index) in objetoPrueba">[{{index}}] {{key}} : {{value}}</li>
+</ul>
+
+
+<!-- 6° ejemp. v-for con Rangos de enteros -->
+<div>
+    <span v-for="x in 20"> {{x}} <br></span>
+</div>
+
+</div>
+
+</body>
+</html>
+
+<script>
+    var app4 = new Vue({
+        el:'#app-4',
+        data:{
+
+            //Primer Ejemplo
+            colores:[
+                {nombre:'Azul'},
+                {nombre:'Verde'},
+                {nombre:'Blanco'}
+            ],
+
+            //Segundo Ejemplo
+            paises:[
+                {nombre:'Panamá'},
+                {nombre:'Brasil'},
+                {nombre:'China'}
+            ],
+
+
+            //Tercer ejemplo
+            objetoPrueba:{
+                nombre: 'Juan',
+                apellido: 'Tomsly',
+                edad:19
+            }
+        }
+    });
+</script>

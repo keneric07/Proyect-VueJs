@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app-5">
+
+        <h2>EVENTO - CLICK</h2>
+        <button v-on:click="contador+= 1">Suma de 1</button>
+        <button @click="contador+= 2">Suma de 2</button>
+        <p>Hiciste click en el boton {{contador}}</p>
+
+
+
+        <h2>EVENTOS - envio de parametros</h2>
+        <button v-on:click="saludar">SALUDAME</button>
+        <button v-on:click="saludar2('hola')">ENVIAMOS UN HOLA</button>
+        <button v-on:click="saludar2('ChaO')">ENVIAMOS CHAO</button>
+
+
+        <h2>EVENTOS - manejador de eventos</h2>
+        <h4>{{texto}}</h4>
+
+        <!--Evento haciendo click en el input-->
+        <input v-model="texto" v-on:click="ingresarTexto">
+        <!--Evento haciendo ENTER despues de escribir-->
+        <input v-model="texto" v-on:change="ingresarTexto">
+        <!--Evento cuando suelta la letra que estoy tocando-->
+        <input v-model="texto" v-on:keyup="ingresarTexto">
+
+
+        <!--MODIFICADORES DE EVENTOS-->
+        <!--SOLO SE EJECUTA UNA VEZ-->
+        <input v-model="texto" v-on:click.once="ingresarTexto">
+
+
+
+
+        <h2>EVENTOS - Modif. de eventos -preventDefault()</h2>
+        <a id="enlace" href="https://sweetalert2.github.io/#icons">Ir a SweetAlert2</a>
+        <br>
+        Marque el Checkbox: <input type="checkbox" id="miChk">
+        <form id="myForm" action="/paginaProcessPHP.php">
+            nombre: <input type="text">
+            Apellido: <input type="text">
+            <input type="button" value="Enviar" onclick="miFuncion()">
+        </form>
+
+
+        <h2>EVENTOS - Submit con Vue.js</h2>
+        {{mensaje90}}
+        <form method="post" v-on:submit="enviar" action="paginaQueProcesa.php">
+            
+            <input v-model="usuario" placeholder="Ingrese usuario">
+            <input v-model="contra" placeholder="Ingrese contra">
+            <button type="submit">Enviar</button>
+        </form>
+
+
+
+
+
+    </div>
+
+</body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+<script>
+
+    function miFuncion(event) {
+        event.preventDefault();
+        document.getElementById("myForm").submit();
+    }
+
+    var app5 = new Vue({
+        el: '#app-5',
+        data: function () {
+            return {
+                texto: "Texto de pruebas",
+                contador: 0,
+                name: "Keneric",
+                usuario: "",
+                contra: "",
+                mensaje90:""
+            }
+        },
+
+        methods: {
+            
+            enviar: function(event) {
+                    if (this.nombre == "" || this.contra == "") {
+                        this.mensaje90 = "Complete los campos";
+                        event.preventDefault();
+                    } else {
+                        this.mensaje90 = "OK";
+                    }
+
+                }
+            ,
+            saludar: function (event) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Bienvenido ' + this.name
+                })
+
+
+            },
+
+            saludar2: function (mensaje) {
+                alert(mensaje)
+            },
+
+            ingresarTexto: function () {
+                console.log("El texto es: " + this.texto)
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: this.texto
+                })
+            }
+        }
+
+    });
+</script>
+
+</html>

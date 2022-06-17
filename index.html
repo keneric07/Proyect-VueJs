@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" value="{{ csrf_token() }}" />
+    <title>Laravel + Vue</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <span v-bind:title="message">
+            Pasa Por encima de aqui
+        </span>
+
+        <h1>{{message2}}</h1>
+        <h4 v-text="message2"></h4>
+
+        <input type="text" v-model="mensaje3">
+        <h3>Texto ingresado: {{mensaje3}}</h3>
+
+    </div>
+
+</body>
+
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hola Kiriat son las: ' + new Date().toLocaleString(),
+            message2: 'Otro Mensaje 2',
+            mensaje3:"Texto del mensaje 3"
+        }
+    })
+</script>
+
+</html>
+
+</html>

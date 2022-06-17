@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directrices Condicionales</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>Directices v-if</h1>
+
+    <div id="app-3">
+        <!--1er ejemplo v-if -->
+        <span v-if="valor1">Ahora me ves</span>
+
+        <!--2do ejemplo v-if y v-else-->
+        <h1 v-if="valor2">Valor2 es verdadero</h1>
+        <h1 v-else>Valor2 es falso</h1>
+
+
+        <!--3cr ejemplo v-else-if -->  
+        <div v-if="valor3 === 'A' ">
+            valor3 es igual a: <strong>A</strong>
+        </div>
+
+        <div v-else-if="valor3 === 'B' ">
+            valor3 es igual a: <strong>B</strong>
+        </div>
+
+        <div v-else-if="valor3 === 'C' ">
+            valor3 es igual a: <strong>C</strong>
+        </div>
+
+        <div v-else>
+            valor3 NO ES NINGUNA DE LAS 3
+        </div>
+
+    </div>
+
+    <h2 id="encabezado">Titulo con H2 de un curso</h2>
+    <script>
+        var app3 = new Vue({
+            el: "#app-3",
+            data:{
+                valor1:true, 
+                valor2:true,
+                valor3:'A'
+            }
+        });
+
+      /*
+      
+      ejemp 1 var x = document.getElementById("encabezado").innerHTML;
+      console.log(x);  
+      console.log(x.length); 
+      if(x.length ==13){
+        console.log("son 13 caracteres");
+      } else {
+        console.log("NO son 13 caracteres");
+      }*/
+    </script>
+</body>
+</html>
