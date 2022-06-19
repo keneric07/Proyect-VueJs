@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+
+<body>
+    <div id="app">
+        <v-app>
+            <v-main>
+                <v-card class="mx-auto mt-5" max-width="900">
+
+                    <v-data-table :headers="columnas" :items="articulos" class="elevation-1">
+                    </v-data-table>
+                    <a href="index.html">INDICE AQUI</a>
+                </v-card>
+            </v-main>
+        </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            vuetify: new Vuetify(),
+            data() {
+                return {
+                    columnas: [
+                        { text: 'ID', value: 'id' },
+                        { text: 'DESCRIPCION', value: 'descripcion' },
+                        { text: 'PRECIO', value: 'precio' },
+                        { text: 'STOCK', value: 'stock' },
+                        { text: "numero_factura_marca", value:"numfact"}
+                        ],
+            
+            
+                    articulos: [
+                        {
+                            id: 1,
+                            numfact: '<a href="index.html">INDICE AQUI</a>'
+                        },
+
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
